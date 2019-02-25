@@ -18,7 +18,7 @@
   </div> 
 </div> 
 
-<form [formGroup]="categoryForm">
+<form [formGroup]="categoryForm" (submit)="createCategory()">
   <div class="card">
     <div class="card-header">
       Informações sobre a categoria
@@ -37,7 +37,7 @@
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary btn-lg float-right mt-3">
+  <button [disabled]="submittingForm || categoryForm.invalid" type="submit" class="btn btn-primary btn-lg float-right mt-3">
     Salvar
   </button>
 </form>

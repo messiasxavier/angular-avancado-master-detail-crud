@@ -10,7 +10,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
 
   protected http: HttpClient;
 
-  constructor(protected apiPath: string, protected injector: Injector) { 
+  constructor(protected apiPath: string, protected injector: Injector) {
     this.http = injector.get(HttpClient);
   }
 
@@ -39,7 +39,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
   update(resource: T): Observable<T> {
     const url = `${this.apiPath}/${resource.id}`;
 
-    return this.http.put('url', resource).pipe(
+    return this.http.put(url, resource).pipe(
       catchError(this.handleError),
       map(() => resource)
     )

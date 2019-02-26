@@ -40,7 +40,7 @@ export class CategoryService {
   update(category: Category): Observable<Category> {
     const url = `${this.apiPath}/${category.id}`;
 
-    return this.http.put(url, category).pipe(
+    return this.http.put('url', category).pipe(
       catchError(this.handleError),
       map(() => category)
     )

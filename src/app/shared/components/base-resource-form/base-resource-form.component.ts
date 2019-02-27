@@ -33,7 +33,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
   ngOnInit() {
     this.setCurrentAction();
-    this.buildCategoryForm();
+    this.buildResourceForm();
     this.loadResource();
   }
 
@@ -136,5 +136,5 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     }
   }
 
-  protected abstract buildCategoryForm(): void;
+  protected abstract buildResourceForm(): void;
 }

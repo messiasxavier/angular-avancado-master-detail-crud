@@ -14,11 +14,11 @@ import currencyFormatter from "currency-formatter";
 export class ReportsComponent implements OnInit {
 
   expenseTotal: any = 0;
-  reveneuTotal: any = 0;
+  revenueTotal: any = 0;
   balance: any = 0;
 
   expenseChartData: any;
-  reveneuChartData: any;
+  revenueChartData: any;
 
   chartOptions = {
     scales: {
@@ -62,23 +62,23 @@ export class ReportsComponent implements OnInit {
 
   private calculateBalance(): void {
     let expenseTotal = 0;
-    let reveneuTotal = 0;
+    let revenueTotal = 0;
 
     this.entries.forEach(entry => {
-      if (entry.type == 'reveneu') {
-        reveneuTotal += currencyFormatter.unformat(entry.amount, { code: 'BRL' });
+      if (entry.type == 'revenue') {
+        revenueTotal += currencyFormatter.unformat(entry.amount, { code: 'BRL' });
       } else {
         expenseTotal += currencyFormatter.unformat(entry.amount, { code: 'BRL' });
       }
     });
 
     this.expenseTotal = currencyFormatter.format(expenseTotal, { code: 'BRL' });
-    this.reveneuTotal = currencyFormatter.format(reveneuTotal, { code: 'BRL' });
-    this.balance = currencyFormatter.format(reveneuTotal - expenseTotal, { code: 'BRL' });
+    this.revenueTotal = currencyFormatter.format(revenueTotal, { code: 'BRL' });
+    this.balance = currencyFormatter.format(revenueTotal - expenseTotal, { code: 'BRL' });
   }
 
   private setChartData() {
-    this.reveneuChartData = this.getChartData('reveneu', 'Gráfico de Receitas', '#9CCC65');
+    this.revenueChartData = this.getChartData('revenue', 'Gráfico de Receitas', '#9CCC65');
     this.expenseChartData = this.getChartData('expense', 'Gráfico de Despesas', '#e03131');
   }
 
